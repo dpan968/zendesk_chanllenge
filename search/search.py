@@ -1,3 +1,7 @@
+"""
+the search module is a mixture of searching logics and second level of user interaction logics
+
+"""
 from pprint import pprint
 import distutils
 import distutils.util
@@ -17,12 +21,18 @@ def start_search(mini_database, input_action):
     print(f'Searching {search_entity_mapping[search_entity]} for {search_term} with a value of {search_value}\n')
 
     if search_entity == '1' and search_term in mini_database['User']['user_searchable_fields']:
+        # input() method returns everything in string format,
+        # therefore the input needs to be converted to int if search by _id
         if search_term == '_id':
             try:
                 search_value = int(search_value)
             except ValueError:
                 print('Please enter an integer\n')
         elif search_term == 'verified' and search_value != 'missing':
+            # json.load() method converts true in json to boolean True in python,
+            # so in the indexed table by verified, the key is a boolean type.
+            # whilst user's input is taken in as a string,
+            # therefore the following method is needed to perform querying.
             search_value = bool(distutils.util.strtobool(search_value))
 
         matched_records = search_by_field(mini_database['User']['user_dict_id_as_key'],
@@ -33,6 +43,7 @@ def start_search(mini_database, input_action):
 
     elif search_entity == '2' and search_term in mini_database['Ticket']['ticket_searchable_fields']:
         if search_term == 'assignee_id':
+            # since the user's input is taken in as string type, a conversion to int is required for querying
             try:
                 search_value = int(search_value)
             except ValueError:

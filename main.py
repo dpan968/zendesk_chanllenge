@@ -4,7 +4,6 @@ The major user interaction logic is handled here, think here as the reception wh
 """
 import view.menu_enum as menu
 from init.init import init_app, list_searchable_fields
-from pprint import pprint
 from search.search import start_search
 
 USER_DATA_PATH = 'data/users.json'
