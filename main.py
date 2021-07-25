@@ -3,7 +3,7 @@ Starting point of the search app.
 The major user interaction logic is handled here, think here as the reception when you walk into a place.
 """
 import view.menu_enum as menu
-from init.init import init_app, list_searchable_fields
+from create_index.created_index import init_app, list_searchable_fields
 from search.search import start_search
 
 USER_DATA_PATH = 'data/users.json'
@@ -30,3 +30,4 @@ if __name__ == '__main__':
             exit()
         else:
             input_action = input('Invalid value, please type 1, 2, or Quit\n').lower()
+    exit()
