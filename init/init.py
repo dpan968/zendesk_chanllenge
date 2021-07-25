@@ -12,6 +12,7 @@ from collections import defaultdict
 import copy
 
 
+
 def load_input_file(file_path):
     with open(file_path) as jsonFile:
         jsonList = json.load(jsonFile)
@@ -46,7 +47,7 @@ def add_assignee_name_to_ticket_list(user_list_dict, ticket_list):
 
 
 def get_searchable_fields(item_list):
-    # the function is required as some fields could be missing for a record in the search_entity,
+    # note that some fields could be missing for a record in the search_entity,
     # eg. a ticket can have no assignee_id
     max_key_count = max([len(item.keys()) for item in item_list])
     for item in item_list:
