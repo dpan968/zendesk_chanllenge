@@ -1,7 +1,7 @@
 import json
 from collections import defaultdict
 import copy
-
+from pprint import pprint
 
 def load_input_file(file_path):
     with open(file_path) as jsonFile:
